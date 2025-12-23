@@ -1,0 +1,7 @@
+{
+  "name": "PRAYERZONE",
+  "description": "A ministry-grade digital hub for prayer, spiritual formation, and Christian community empowered by AI.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
