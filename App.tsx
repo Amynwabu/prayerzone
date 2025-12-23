@@ -1,48 +1,50 @@
-import React, { useState, useEffect } from 'react';
-import { View } from './types';
-import { Header, Footer, AIChatOverlay } from './components/Layout';
-import { HomeView, AboutView, ContactView } from './views/MainViews';
-import { PrayerRoomsView, HowToPrayView, HelpPrayView, StreetPrayerView, OnlinePrayerView, CreativeSpacesView } from './views/PrayerViews';
-import { BlogView, AIToolsView, ResourcesView } from './views/ResourceViews';
+import React from 'react';
 
 const App: React.FC = () => {
-  const [currentView, setCurrentView] = useState<View>(View.HOME);
-
-  // Scroll to top on view change
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [currentView]);
-
-  const renderView = () => {
-    switch (currentView) {
-      case View.HOME: return <HomeView setView={setCurrentView} />;
-      case View.ABOUT: return <AboutView />;
-      case View.PRAYER_SPACES: return <CreativeSpacesView />;
-      case View.PRAYER_ROOMS: return <PrayerRoomsView />;
-      case View.HOW_TO_PRAY: return <HowToPrayView />;
-      case View.HELP_PRAY: return <HelpPrayView />;
-      case View.STREETS: return <StreetPrayerView />;
-      case View.ONLINE: return <OnlinePrayerView />;
-      case View.BLOG: return <BlogView />;
-      case View.AI_TOOLS: return <AIToolsView />;
-      case View.RESOURCES: return <ResourcesView />;
-      case View.CONTACT: return <ContactView />;
-      default: return <HomeView setView={setCurrentView} />;
-    }
-  };
-
   return (
-    <div className="min-h-screen flex flex-col font-sans text-gray-800 bg-pearl">
-      <Header currentView={currentView} setView={setCurrentView} />
-      
-      <main className="flex-grow">
-        {renderView()}
-      </main>
-
-      <Footer setView={setCurrentView} />
-      
-      {/* Floating AI Assistant */}
-      <AIChatOverlay />
+    <div style={{
+      minHeight: '100vh',
+      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      fontFamily: 'Arial, sans-serif',
+      color: 'white',
+      padding: '20px'
+    }}>
+      <h1 style={{ fontSize: '3rem', marginBottom: '20px', textShadow: '2px 2px 4px rgba(0,0,0,0.3)' }}>
+        🙏 PRAYERZONE
+      </h1>
+      <p style={{ fontSize: '1.5rem', marginBottom: '40px' }}>
+        Where Prayer Meets Power
+      </p>
+      <div style={{
+        background: 'rgba(255,255,255,0.1)',
+        padding: '30px',
+        borderRadius: '15px',
+        maxWidth: '600px',
+        backdropFilter: 'blur(10px)'
+      }}>
+        <h2 style={{ marginBottom: '15px' }}>Welcome to Your Prayer Community</h2>
+        <p style={{ lineHeight: '1.6' }}>
+          Join thousands of believers connecting in prayer. Experience the power of united prayer,
+          share testimonies, and grow in your faith journey together.
+        </p>
+        <button style={{
+          marginTop: '20px',
+          padding: '12px 30px',
+          fontSize: '1.1rem',
+          background: '#fff',
+          color: '#667eea',
+          border: 'none',
+          borderRadius: '25px',
+          cursor: 'pointer',
+          fontWeight: 'bold'
+        }}>
+          Get Started
+        </button>
+      </div>
     </div>
   );
 };
